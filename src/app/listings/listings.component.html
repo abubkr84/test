@@ -1,0 +1,56 @@
+
+
+
+<section class="container">
+  <ngb-pagination [collectionSize]="total | async" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" (pageChange)="pageChange($event)"></ngb-pagination>
+
+  <div class="card mb-2" *ngFor="let listing of listings">
+    <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+
+    <div class="card-block">
+      <h4 class="card-title">{{listing.name}}</h4>
+      <p class="card-text">{{listing.description}}</p>
+      <app-field-display label="start" value="{{listing.startdate | date:'shortDate'}}"></app-field-display>
+      <app-field-display label="end" value="{{listing.enddate | date:'shortDate'}}"></app-field-display>
+      <app-field-display label="age cutoff" value="{{listing.age_cutoff | date:'shortDate'}}"></app-field-display>
+      <app-field-display label="guaranteed games" value="{{listing.guaranteedGames}}"></app-field-display>
+      <app-field-display label="location" value="{{listing.primary_complex}}"></app-field-display>
+      <app-field-display label="street" value="{{listing.location.street}}"></app-field-display>
+      <app-field-display label="state" value="{{listing.location.state}}"></app-field-display>
+      <app-field-display label="zip" value="{{listing.location.zip}}"></app-field-display>
+      <app-field-display label="agegroup" value="{{listing.agegroup}}"></app-field-display>
+      <app-field-display label="level" value="{{listing.level}}"></app-field-display>
+      <app-field-display label="max teams" value="{{listing.maximumNumberOfTeams}}"></app-field-display>
+      <app-field-display label="min teams" value="{{listing.minimumNumberOfTeams}}"></app-field-display>
+      <app-field-display label="gate fee" value="{{listing.gateFee}}"></app-field-display>
+      <app-field-display label="trophies" value="{{listing.trophies}}"></app-field-display>
+      <app-field-display label="awards" value="{{listing.awards}}"></app-field-display>
+      <app-field-display label="host team" value="{{listing.hostTeam}}"></app-field-display>
+      <app-field-display label="medals" value="{{listing.medals}}"></app-field-display>
+      <app-field-display label="t-shirts" value="{{listing.tshirts}}"></app-field-display>
+      <app-field-display label="gifts" value="{{listing.gifts}}"></app-field-display>
+      <app-field-display label="refund policy" value="{{listing.refundPolicy}}"></app-field-display>
+      <app-field-display label="contact name" value="{{listing.contactName}}"></app-field-display>
+      <app-field-display label="contact phone" value="{{listing.contactPhone}}"></app-field-display>
+      <app-field-display label="entry fee" value="{{listing.entry_fee}}"></app-field-display>
+      <a *ngIf="listing.rules" href="{{listing.rules}}" class="btn btn-primary">rules</a>
+      <a *ngIf="listing.url" href="{{listing.url}}" class="btn btn-primary">website</a>
+      <a class="btn btn-primary"(click)="showMaps()">Show Map</a>
+      <div *ngIf="show">
+      <a class="btn btn-primary"(click)="hide()">Hide Map</a>
+      <ngui-map zoom="14" center="Brampton, Canada">
+            <marker
+            [position]="listing.location.latLong"></marker>
+          </ngui-map>
+      </div>
+    </div>
+
+<!-- <div *ngIf="show">
+<a class="btn btn-primary"(click)="hide()">Hide Map</a>
+ <ngui-map zoom="14" center="Brampton, Canada">
+      <marker *ngFor="let pos of positions"
+      [position]="pos"></marker>
+    </ngui-map>
+</div> -->
+  </div>
+</section>

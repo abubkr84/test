@@ -1,0 +1,101 @@
+{
+  "name": "tournamentlisting",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "details": {
+      "type": "string"
+    },
+    "tournament_format": {
+      "type": "string"
+    },
+    "age_cutoff": {
+      "type": "Date"
+    },
+    "primary_complex": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "startdate": {
+      "type": "Date"
+    },
+    "enddate": {
+      "type": "Date"
+    },
+    "agegroup": {
+      "type": "string"
+    },
+    "level": {
+      "type": "string"
+    },
+    "maximumNumberOfTeams": {
+      "type": "number"
+    },
+    "minimumNumberOfTeams": {
+      "type": "number"
+    },
+    "registrationFee": {
+      "type": "number"
+    },
+    "gateFee": {
+      "type": "number"
+    },
+    "hostTeam": {
+      "type": "string"
+    },
+    "trophies": {
+      "type": "string"
+    },
+    "medals": {
+      "type": "string"
+    },
+    "gifts": {
+      "type": "boolean"
+    },
+    "tshirts": {
+      "type": "boolean"
+    },
+    "location": {
+      "type": "address"
+    },
+    "guaranteedGames": {
+      "type": "number"
+    },
+    "refundPolicy": {
+      "type": "string"
+    },
+    "contactName": {
+      "type": "string"
+    },
+    "contactEmail": {
+      "type": "string"
+    },
+    "contactPhone": {
+      "type": "string"
+    },
+    "rules": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "User",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

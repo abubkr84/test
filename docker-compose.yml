@@ -1,0 +1,29 @@
+version: '3'
+
+volumes:
+  mongodata:
+services:
+  mongo:  
+    image: mongo:latest
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - "27017:27017"
+    restart: always
+  node:
+    depends_on:
+      - mongo
+    image: node:8
+    volumes:
+      - ./:/usr/src/app
+    links:
+      - mongo
+    restart: always
+    environment:
+      NODE_ENV: development
+      DEBUG: none
+      MONGO_CONNECTION: "mongodb://mongo/tournaments"
+    command: ["node", "/usr/src/app"]
+    ports:
+      - "8080:3000"
+      - "9229:9229"
